@@ -15,7 +15,7 @@
         <div class="hidden md:flex flex-col font-medium py-2 uppercase">
             <span class="details">567 m ü. M.</span>
             <span class="details">46° 39′ 36″N 7° 48′ 32″O </span>
-            <div class="flex gap-2 lg:gap-4 mt-4">
+            <div class="flex gap-2 lg:gap-4 mt-4" v-if="weatherData">
                 <!-- Todo: use npm -->
                 <span class="icon-pair details">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><path d="M0 336c0 79.5 64.5 144 144 144H512c70.7 0 128-57.3 128-128c0-61.9-44-113.6-102.4-125.4c4.1-10.7 6.4-22.4 6.4-34.6c0-53-43-96-96-96c-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32C167.6 32 96 103.6 96 192c0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336z"/></svg>
@@ -93,17 +93,21 @@
     import { ref } from "vue";
     import { useMotions, useMotion } from '@vueuse/motion'
     import axios from 'axios';
-    
+
     /* Weather widget, eventually move me out to seperate component */
 
-    const API_KEY = import.meta.env.API_SECRET;
+    const API_KEY = "019ad2e03cbe2d5d5bb109e17eb534ab" // defineProps(['secret'])
     const CITY_NAME = 'Därligen,CH';
     const URL = `http://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&units=metric&appid=${API_KEY}`;
+    var response: any;
+    var weatherData: any;
 
     // figure out why try-catch doesn't work on me
-    const response = await axios.get(URL);
-    const weatherData = response.data;
-
+    if (API_KEY) {
+        response = await axios.get(URL);
+        weatherData = response.data;
+    }
+   
     /* Mobile menu, animations */
 
     var isOpen = ref<boolean>(false);

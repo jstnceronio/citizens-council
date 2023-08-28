@@ -1,5 +1,10 @@
 ---
 import Header from "../components/header.vue";
+import Footer from "../components/footer.astro";
+
+import { atom } from 'nanostores';
+
+// const secret = import.meta.env.API_SECRET;
 ---
 
 <html lang="en">
@@ -11,9 +16,10 @@ import Header from "../components/header.vue";
 		<title>Burgergemeinde Därligen</title>
 	</head>
 	<body>
-		<div class="xl:mx-32">
+		<div class="todo:mx-32">
 			<Header client:load/>
             <slot />
+			<Footer />
 		</div>			
 	</body>
 </html>
