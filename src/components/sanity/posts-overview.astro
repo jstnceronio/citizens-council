@@ -1,0 +1,33 @@
+---
+import { useSanityClient } from '@sanity/astro';
+
+const posts = await useSanityClient().fetch(`*[_type == "post"]`);
+
+function truncateText(text) {
+  if (text.length <= 50) {
+    return text;
+  } else {
+    return text.substring(0, 50) + "[...]";
+  }
+}
+---
+
+<div class="event-wrapper max-h-[44rem]">
+    {posts && <ul class="event-item py-16 lg:py-0 lg:ml-8 2xl:px-8">
+        {posts.map((post: any) => (
+        <div class="event-wrapper mb-4 w-[40rem]">
+            <li class="event-header text-2xl font-medium">
+                <a href={`/post/${post.slug.current}`}>{post.title}</a>
+            </li>
+            <li class="event-description mt-4">
+                {new Date(post._createdAt).toLocaleDateString("de-CH")}
+            </li>
+            <li class="event-description">
+                {truncateText(post.body[0].children[0].text)}
+            </li>
+            <br />
+            <hr />
+        </div>
+        ))}
+    </ul>}
+</div>

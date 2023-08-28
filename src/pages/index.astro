@@ -1,4 +1,5 @@
 ---
+import PostsOverview from '../components/sanity/posts-overview.astro';
 import Layout from '../layouts/layout.astro'
 ---
 
@@ -14,21 +15,7 @@ import Layout from '../layouts/layout.astro'
 	</div>
 
 	<div class="right-container lg:px-0">
-	  <div class="event-wrapper max-h-[44rem]">
-		<div class="event-item py-16 lg:py-0 lg:ml-8 2xl:px-8">
-		  <div class="event-header text-2xl font-medium">
-			Cool title
-		  </div>
-		  <div class="event-description mt-4">
-			Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-			consetetur sadipscing elitr, sed diam nonumy eirmod
-			tempor invidunt ut labore et dolore magna aliquyam erat,
-			sed diam voluptua. At vero eos et accusam et justo duo dolores
-		  </div>
-		  <br>
-		  <hr>
-		</div>
-	  </div>
+	  <PostsOverview />
 	</div>
   </div>	  
 </Layout>
