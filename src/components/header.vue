@@ -44,13 +44,14 @@
     </div>
     
     <!-- Menu XL -->
+    <!-- TODO: nav items could be made to list -->
     <hr class="mt-12">
     <div class="hidden md:flex uppercase my-6 mr-16 justify-between">
-        <a href="#" class="menu-item">Startseite</a>
-        <a href="#" class="menu-item">Mitglieder</a>
-        <a href="#" class="menu-item">Über uns</a>
-        <a href="#" class="menu-item">Verwaltungskreis</a>
-        <a href="#" class="menu-item">Kontakt</a>
+        <a href="/" class="menu-item">Startseite</a>
+        <a href="/members" class="menu-item">Mitglieder</a>
+        <a href="/about" class="menu-item">Über uns</a>
+        <a href="/land" class="menu-item">Verwaltungskreis</a>
+        <a href="/contact" class="menu-item">Kontakt</a>
     </div>
     <hr>
 

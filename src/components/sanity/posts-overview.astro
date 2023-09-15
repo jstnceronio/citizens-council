@@ -1,13 +1,15 @@
 ---
+// the loading of the posts shouldn't impede the loading of the whole page ..
+
 import { useSanityClient } from '@sanity/astro';
 
-const posts = await useSanityClient().fetch(`*[_type == "post"]`);
+const posts = await useSanityClient().fetch(`*[_type == "post"]`); // todo: sort me by date
 
-function truncateText(text) {
+function truncateText(text: any) {
   if (text.length <= 50) {
     return text;
   } else {
-    return text.substring(0, 50) + "[...]";
+    return text.substring(0, 100) + "[...]";
   }
 }
 ---
@@ -17,13 +19,13 @@ function truncateText(text) {
         {posts.map((post: any) => (
         <div class="event-wrapper mb-4 w-[40rem]">
             <li class="event-header text-2xl font-medium">
-                <a href={`/post/${post.slug.current}`}>{post.title}</a>
+                <a href={`/post/${post.slug?.current}`}>{post.title}</a>
             </li>
             <li class="event-description mt-4">
                 {new Date(post._createdAt).toLocaleDateString("de-CH")}
             </li>
             <li class="event-description">
-                {truncateText(post.body[0].children[0].text)}
+                {truncateText(post.body[0].children[0].text)} <!-- TODO: what if there is no body? -->
             </li>
             <br />
             <hr />
