@@ -11,11 +11,11 @@ import Footer from "../components/footer.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Burgergemeinde Därligen</title>
 	</head>
-	<body>
+	<body class="h-screen">
 		<div class="todo:mx-32">
 			<Header client:load/>
             <slot />
-			<Footer />
+			<Footer/>
 		</div>			
 	</body>
 </html>
