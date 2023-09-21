@@ -50,7 +50,7 @@
         <a href="/" class="menu-item">Startseite</a>
         <a href="/members" class="menu-item">Mitglieder</a>
         <a href="/about" class="menu-item">Über uns</a>
-        <a href="/land" class="menu-item">Verwaltungskreis</a>
+        <a href="/area" class="menu-item">Verwaltungskreis</a>
         <a href="/contact" class="menu-item">Kontakt</a>
     </div>
     <hr>
@@ -66,7 +66,7 @@
             <a href="/">Startseite</a>
             <a href="/members">Mitglieder</a>
             <a href="/about">Über uns</a>
-            <a href="/land">Verwaltungskreis</a>
+            <a href="/area">Verwaltungskreis</a>
             <a href="/contact">Kontakt</a>
     </div>
 </template>
