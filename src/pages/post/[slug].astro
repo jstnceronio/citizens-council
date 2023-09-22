@@ -1,6 +1,7 @@
 ---
 import { useSanityClient } from '@sanity/astro';
 import PortableText from '../../components/sanity/portable-text.astro';
+import Layout from '../../layouts/layout.astro';
 
 export async function getStaticPaths() {
   const posts = await useSanityClient().fetch(`*[_type == "post"]`);
@@ -17,7 +18,10 @@ export async function getStaticPaths() {
 
 const { title, body } = Astro.props;
 ---
+<Layout class="min-h-screen">
+  <div class="post-wrapper p-16 min-h-[26rem]">
+    <h1 class="text-5xl text-gray-900 mb-8">{title}</h1>
 
-<h1>{title}</h1>
-
-<PortableText portableText={body} />
+    <PortableText portableText={body} />
+  </div>
+</Layout>

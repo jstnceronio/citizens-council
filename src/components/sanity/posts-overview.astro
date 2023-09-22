@@ -4,17 +4,18 @@
 import { useSanityClient } from '@sanity/astro';
 
 const posts = await useSanityClient().fetch(`*[_type == "post"]`); // todo: sort me by date
+const maxTextPreviewLength = 200;
 
 function truncateText(text: any) {
   if (text.length <= 50) {
     return text;
   } else {
-    return text.substring(0, 100) + "[...]";
+    return text.substring(0, maxTextPreviewLength) + "[...]";
   }
 }
 ---
 
-<div class="event-wrapper max-h-[44rem]">
+<div class="event-wrapper">
     {posts && <ul class="event-item py-16 lg:py-0 lg:ml-8 2xl:px-8">
         {posts.map((post: any) => (
         <div class="event-wrapper mb-4 w-[40rem]">

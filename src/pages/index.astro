@@ -4,8 +4,8 @@ import Layout from '../layouts/layout.astro'
 ---
 
 <Layout>
- <div class="home-container flex flex-col lg:flex-row p-16">
-	<div class="left-container ">
+ <div class="home-container flex flex-col lg:flex-row p-16 2xl:gap-16">
+	<div class="left-container">
 		<div class="home-header text-5xl text-gray-900">
 			Aktuelles
 		</div>
@@ -14,8 +14,8 @@ import Layout from '../layouts/layout.astro'
 		</div>
 	</div>
 
-	<div class="right-container lg:px-0">
-	  <PostsOverview />
+	<div class="right-container lg:px-0 mt-12 lg:max-h-[26rem] lg:overflow-y-scroll lg:overflow-x-hidden">
+	  <PostsOverview client:load/>
 	</div>
   </div>	  
 </Layout>
