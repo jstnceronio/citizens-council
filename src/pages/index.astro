@@ -9,13 +9,13 @@ import Layout from '../layouts/layout.astro'
 		<div class="home-header text-5xl text-gray-900">
 			Aktuelles
 		</div>
-		<div class="home-image w-[36rem] h-96 bg-gray-200 mt-8">
+		<div class="home-image sm:w-[36rem] h-96 bg-gray-200 mt-8">
 			<!-- This is a placeholder for an image -->
 		</div>
 	</div>
 
 	<div class="right-container lg:px-0 mt-12 lg:max-h-[26rem] lg:overflow-y-scroll lg:overflow-x-hidden">
-	  <PostsOverview client:load/>
+	  <PostsOverview/>
 	</div>
   </div>	  
 </Layout>
