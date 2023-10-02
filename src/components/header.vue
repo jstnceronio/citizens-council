@@ -2,7 +2,7 @@
     <div class="flex justify-between text-gray-900 mt-8 mx-8 sm:mt-16 sm:mx-16">
         <div class="flex">
             <!-- Logo -->
-            <img src="./../assets/logo.png" class="w-16 lg:w-24 h-">
+            <img src="/logo.png" class="w-16 lg:w-24 h-">
 
             <!-- Title -->
             <div class="flex-col mx-2 sm:mx-8">
