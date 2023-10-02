@@ -31,7 +31,7 @@
             </div>
         </div>
         -->
-        
+
         <!-- Mobile menu button -->
         <button class="flex md:hidden items-center z-10" @click="toggle()">
             <div class="space-y-1">
@@ -119,10 +119,12 @@
     // TODO: Use css animations, this is odd
 
     const toggle = () => {
+        console.log('being toggled!')
+        /*
         isOpen.value = !isOpen.value;
         rotateUpper();
         rotateMiddle();
-        toggleLower();
+        toggleLower(); */
     }
 
     const { apply: applyUpper } = useMotion(upper, {
