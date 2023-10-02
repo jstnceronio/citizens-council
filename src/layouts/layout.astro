@@ -6,14 +6,14 @@ import Footer from "../components/footer.astro";
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/x-icon" href="/logo.png">
+		<link rel="icon" type="image/x-icon" href="../src/assets/logo.png"> <!-- FIXME -->
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Burgergemeinde Därligen</title>
 	</head>
 	<body class="h-screen">
 		<div class="todo:mx-32">
-			<Header client:load/>
+			<Header client:only="vue"/>
             <slot />
 			<Footer/>
 		</div>			

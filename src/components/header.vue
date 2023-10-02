@@ -29,8 +29,8 @@
                     {{ weatherData.main.temp }}°
                 </span>
             </div>
-        </div>
-        -->
+        </div>-->
+        
 
         <!-- Mobile menu button -->
         <button class="flex md:hidden items-center z-10" @click="toggle()">
@@ -95,9 +95,9 @@
     import { useMotions, useMotion } from '@vueuse/motion'
     import axios from 'axios';
 
-    /* Weather widget, eventually move me out to seperate component */
+    /* Weather widget, eventually move me out to seperate component 
 
-    const API_KEY = "blablabla" // defineProps(['secret'])
+    const API_KEY = "" // defineProps(['secret'])
     const CITY_NAME = 'Därligen,CH';
     const URL = `http://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&units=metric&appid=${API_KEY}`;
     var response: any;
@@ -107,7 +107,7 @@
     if (API_KEY) {
         response = await axios.get(URL);
         weatherData = response.data;
-    }
+    }*/
    
     /* Mobile menu, animations */
 
@@ -119,12 +119,11 @@
     // TODO: Use css animations, this is odd
 
     const toggle = () => {
-        console.log('being toggled!')
-        /*
+        
         isOpen.value = !isOpen.value;
         rotateUpper();
         rotateMiddle();
-        toggleLower(); */
+        toggleLower();
     }
 
     const { apply: applyUpper } = useMotion(upper, {
