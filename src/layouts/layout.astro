@@ -13,7 +13,7 @@ import Footer from "../components/footer.astro";
 	</head>
 	<body class="h-screen">
 		<div class="todo:mx-32">
-			<Header client:only/>
+			<Header client:load/>
             <slot />
 			<Footer/>
 		</div>			

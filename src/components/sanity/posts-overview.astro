@@ -25,7 +25,7 @@ function truncateText(text: any) {
             <li class="event-description mt-4">
                 {new Date(post._createdAt).toLocaleDateString("de-CH")}
             </li>
-            <li class="event-description">
+            <li class="event-description text-sm">
                 {truncateText(post.body[0].children[0].text)} <!-- TODO: what if there is no body? -->
             </li>
             <br />
@@ -34,3 +34,20 @@ function truncateText(text: any) {
         ))}
     </ul>}
 </div>
+
+<script>
+  let screenSize;
+
+  function updateScreenSize() {
+    if (window.innerWidth < 768) {
+      screenSize = 'small';
+    } else if (window.innerWidth < 1024) {
+      screenSize = 'medium';
+    } else {
+      screenSize = 'large';
+    }
+    console.log(screenSize);
+  }
+  window.addEventListener('resize', updateScreenSize);
+  updateScreenSize();
+</script>
