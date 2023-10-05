@@ -71,7 +71,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     a:hover {
         @apply font-bold;
         color: #00579F;
