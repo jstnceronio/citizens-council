@@ -2,10 +2,10 @@
     <div class="flex justify-between text-gray-900 mt-8 mx-8 sm:mt-16 sm:mx-16">
         <div class="flex">
             <!-- Logo -->
-            <img src="/logo.png" class="w-16 lg:w-24 h-">
+            <img src="/logo.png" class="w-16 lg:w-24">
 
             <!-- Title -->
-            <div class="flex-col mx-2 sm:mx-8">
+            <div class="flex-col lg:pl-8 mx-2 sm:mx-8">
                 <h1 class="font-bold text-3xl lg:text-5xl">DÄRLIGEN</h1>
                 <p class="lg:mt-4 sm:text-xl lg:text-2xl">Burgergemeinde am Thunersee</p>
             </div>
@@ -73,7 +73,6 @@
 
 <style scoped>
     a:hover {
-        @apply font-bold;
         color: #00579F;
     }
 
