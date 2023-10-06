@@ -4,7 +4,7 @@ import Layout from "../layouts/layout.astro";
 ---
 
 <Layout>
-	<div class="home-container flex flex-col lg:flex-row p-16 2xl:gap-16">
+	<div class="home-container flex flex-col lg:flex-row p-8 md:p-16 2xl:gap-16">
 		<div class="left-container">
 			<div class="home-header text-5xl text-gray-900">Aktuelles</div>
 			<div class="home-image sm:w-[36rem] h-96 bg-gray-200 mt-8">
@@ -13,8 +13,8 @@ import Layout from "../layouts/layout.astro";
 		</div>
 
 		<div
-			class="right-container lg:px-0 mt-12 lg:max-h-[26rem] lg:overflow-y-scroll lg:overflow-x-hidden scrollbar pr-4"
-			id="style-5"
+			class="right-container lg:px-0 mt-12 max-h-[42rem] lg:max-h-[26rem] overflow-y-scroll lg:overflow-x-hidden scrollbar pr-8 md:pr-4"
+			id="custom-scrollbar"
 		>
 			<PostsOverview />
 		</div>
@@ -22,16 +22,16 @@ import Layout from "../layouts/layout.astro";
 </Layout>
 
 <style>
-	#style-5::-webkit-scrollbar-track {
+	#custom-scrollbar::-webkit-scrollbar-track {
 		background-color: #f5f5f5;
 	}
 
-	#style-5::-webkit-scrollbar {
+	#custom-scrollbar::-webkit-scrollbar {
 		width: 8px;
 		background-color: #f5f5f5;
 	}
 
-	#style-5::-webkit-scrollbar-thumb {
+	#custom-scrollbar::-webkit-scrollbar-thumb {
 		background-color: #00579F;
 
 		background-image: -webkit-gradient(
