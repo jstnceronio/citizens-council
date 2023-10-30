@@ -66,14 +66,14 @@ const members = [
 ---
 
 <Layout>
-    <div class="members-container p-16">
+    <div class="members-container p-8 md:p-16">
         <div class="members-header text-5xl text-gray-900 mb-8">
             <h1>Mitglieder</h1>
         </div>
         <div class="member-rows grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full">
             {members.map((member) => (
-                <div class="member text-sm flex sm:block">
-                    <div class="coat-of-arms w-36 h-36 mb-4 mr-8 bg-gray-200 flex items-center justify-center"></div>
+                <div class="member text-sm flex flex-col">
+                    <div class="coat-of-arms w-36 h-36 mb-4 mr-8 bg-gray-200 items-center justify-center"></div>
                     <div class="text-wrapper">
                         <h2 class="name text-lg mb-2">{member.name}</h2>
                     <h3 class="function font-bold mb-2">{member.function}</h3>

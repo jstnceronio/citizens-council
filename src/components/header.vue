@@ -1,11 +1,11 @@
 <template>
-    <div class="flex justify-between text-gray-900 mt-8 mx-8 sm:mt-16 sm:mx-16">
-        <div class="flex">
+    <div class="flex flex-col-reverse md:flex-col justify-between text-gray-900 mt-8 sm:mt-16 mx-8 md:mx-16">
+        <div class="flex max-md:justify-between">
             <!-- Logo -->
-            <img src="/logo.png" class="w-16 lg:w-24 h-">
+            <img src="/logo.png" class="w-16 lg:w-24 order-3 md:order-1">
 
             <!-- Title -->
-            <div class="flex-col mx-2 sm:mx-8">
+            <div class="flex-col lg:pl-8 mr-2 mt-2 md:mx-8 order-2">
                 <h1 class="font-bold text-3xl lg:text-5xl">DÄRLIGEN</h1>
                 <p class="lg:mt-4 sm:text-xl lg:text-2xl">Burgergemeinde am Thunersee</p>
             </div>
@@ -33,7 +33,7 @@
         
 
         <!-- Mobile menu button -->
-        <button class="flex md:hidden items-center z-10" @click="toggle()">
+        <button class="flex md:hidden items-center z-10 mb-4 order-1" @click="toggle()">
             <div class="space-y-1">
                 <span ref="upper" class="block h-0.5 w-6 bg-black"></span>
                 <span ref="middle" class="block h-0.5 w-6 bg-black"></span>
@@ -45,7 +45,7 @@
     
     <!-- Menu XL -->
     <!-- TODO: nav items could be made to list -->
-    <hr class="mt-12">
+    <hr class="mt-4 sm:mt-12">
     <div class="hidden md:flex uppercase my-6 mr-16 justify-between">
         <a href="/" class="menu-item">Startseite</a>
         <a href="/members" class="menu-item">Mitglieder</a>
@@ -71,9 +71,8 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     a:hover {
-        @apply font-bold;
         color: #00579F;
     }
 
