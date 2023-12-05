@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col-reverse md:flex-col justify-between text-gray-900 mt-8 sm:mt-16 mx-8 md:mx-16">
+    <div class="flex flex-col-reverse md:flex-col justify-between text-gray-900 pt-8 sm:pt-16 mx-8 md:mx-16">
         <div class="flex max-md:justify-between">
             <!-- Logo -->
             <img src="/logo.png" class="w-16 lg:w-24 order-3 md:order-1">
