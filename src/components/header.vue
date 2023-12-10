@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col-reverse md:flex-col justify-between text-gray-900 pt-8 sm:pt-16 mx-8 md:mx-16">
+    <div class="flex flex-col-reverse 2xl:flex-col justify-between text-gray-900 pt-8 sm:pt-16 mx-8 md:mx-16">
         <div class="flex max-md:justify-between">
             <!-- Logo -->
             <img src="/logo.png" class="w-16 lg:w-24 order-3 md:order-1">
@@ -31,9 +31,8 @@
             </div>
         </div>-->
         
-
         <!-- Mobile menu button -->
-        <button class="flex md:hidden items-center z-10 mb-4 order-1" @click="toggle()">
+        <button class="flex 2xl:hidden items-center z-10 mb-4 order-1" @click="toggle()">
             <div class="space-y-1">
                 <span ref="upper" class="block h-0.5 w-6 bg-black"></span>
                 <span ref="middle" class="block h-0.5 w-6 bg-black"></span>
@@ -46,12 +45,13 @@
     <!-- Menu XL -->
     <!-- TODO: nav items could be made to list -->
     <hr class="mt-4 sm:mt-12">
-    <div class="hidden md:flex uppercase my-6 mr-16 justify-between">
+    <div class="hidden 2xl:flex uppercase my-6 mr-16 justify-between">
         <a href="/" class="menu-item">Startseite</a>
-        <a href="/members" class="menu-item">Mitglieder</a>
-        <a href="/about" class="menu-item">Über uns</a>
-        <a href="/area" class="menu-item">Verwaltungskreis</a>
-        <a href="/contact" class="menu-item">Kontakt</a>
+        <a href="/members" class="menu-item">Behörde / Verwaltung</a>
+        <a href="/history" class="menu-item">Geschichte</a>
+        <a href="/regulations" class="menu-item">Reglemente</a>
+        <a href="/property" class="menu-item">Liegenschaften</a>
+        <a href="/forestry" class="menu-item">Forstbetrieb</a>
     </div>
     <hr>
 
@@ -60,14 +60,15 @@
         v-motion
         :initial="{ opacity: 0, x: 0 }"
         :enter="{ opacity: 1, x: 0, scale: 1 }"
-        class="md:hidden flex flex-col gap-16 uppercase fixed backdrop-blur-md bg-white/30 bottom-0 left-0 w-full h-screen items-center p-16"
+        class="2xl:hidden flex flex-col gap-16 uppercase fixed backdrop-blur-md bg-white/30 bottom-0 left-0 w-full h-screen items-center p-16"
         v-if="isOpen"
         >
-            <a href="/">Startseite</a>
-            <a href="/members">Mitglieder</a>
-            <a href="/about">Über uns</a>
-            <a href="/area">Verwaltungskreis</a>
-            <a href="/contact">Kontakt</a>
+            <a href="/" class="menu-item">Startseite</a>
+            <a href="/members" class="menu-item">Behörde / Verwaltung</a>
+            <a href="/history" class="menu-item">Geschichte</a>
+            <a href="/regulations" class="menu-item">Reglemente</a>
+            <a href="/property" class="menu-item">Liegenschaften</a>
+            <a href="/forestry" class="menu-item">Forstbetrieb</a>
     </div>
 </template>
 

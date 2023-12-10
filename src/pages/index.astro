@@ -4,20 +4,32 @@ import Layout from "../layouts/layout.astro";
 ---
 
 <Layout>
-	<div class="home-container flex flex-col lg:flex-row p-8 md:p-16 2xl:gap-16">
-		<div class="left-container">
-			<div class="home-header text-5xl text-gray-900">Aktuelles</div>
-			<img src="fourth.png" class="home-image sm:w-[40rem] bg-gray-200 mt-8" alt="">
-			<!--
-			<div class="home-image sm:w-[36rem] h-96 bg-gray-200 mt-8">				
-			</div> -->
-		</div>
+	<div class="home-container p-8 md:p-16 2xl:gap-16">
+		<div class="members-header text-5xl text-gray-900 mb-8">
+            <h1>Herzlich willkommen</h1>
+        </div>
+		<p class="py-4">
+			Die Burgergemeinde Därligen ist eine öffentlich-rechtliche Körperschaft mit eigener Rechtspersönlichkeit. <br> 
+			Wie die Einwohnergemeinde untersteht auch die Burgergemeinde dem kantonalen Recht und damit der Oberaufsicht durch den Kanton.
+		</p>
+		<p class="pb-4">
+			Die Burgerversammlung ist das oberste Organ der Burgergemeinde, die Legislative. Sie versammelt sich ordentlicherweise zwei Mal im Jahr. <br> 
+			Im Frühjahr für die Geneh-migung der Jahresrechnung und im Dezember für das Budget. <br> 
+			Sie wählt den Burger-rat und die Burgerschreiberin bzw. Burgerkassierin, beschliesst den Voranschlag und die Laufende Rechnung, erlässt oder ändert Reglemente und befindet über Einbur-gerungen und über Sachgeschäfte, die ausserhalb der Finanzkompetenz des Bur-gerrates liegen.
+		</p>
+		<div class="news-container flex flex-col lg:flex-row mt-4">		
+			<div class="left-container">
+				<div class="home-header text-2xl text-gray-900 font-medium">Aktuelles</div>
+				<img src="first.png" class="home-image sm:w-[40rem] bg-gray-200 mt-8 mb-4" alt="daerligen">
+				<a href="/news" class="hover:underline">Zur Übersicht der Neuigkeiten →</a>
+			</div>
 
-		<div
-			class="right-container lg:px-0 mt-12 max-h-[42rem] lg:max-h-[26rem] overflow-y-scroll lg:overflow-x-hidden scrollbar pr-8 md:pr-4"
-			id="custom-scrollbar"
-		>
-			<PostsOverview />
+			<div
+				class="right-container lg:px-0 mt-12 max-h-[42rem] lg:max-h-[26rem] overflow-y-scroll lg:overflow-x-hidden scrollbar pr-8 md:pr-4"
+				id="custom-scrollbar"
+			>
+				<PostsOverview />
+			</div>
 		</div>
 	</div>
 </Layout>

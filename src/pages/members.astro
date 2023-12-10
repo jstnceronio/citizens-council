@@ -28,39 +28,30 @@ const members = [
     },
     {
         name: "Yves Steuri",
-        function: "",
+        function: "Burgerrat",
         tasks: [
-            '',
-            '',
-            '',
-            ''
+            'Bäche',
+            'Weganlagen',
+            'Deponie Lee',
+            'Forst'
         ],
-        email: '',
-        number: ''
+        email: 'turbosteuri@gmx.ch',
+        number: '079 602 71 65'
     },
     {
         name: "Justin Ceronio",
-        function: "",
+        function: "Burgerrat",
         tasks: [
-            '',
-            '',
-            '',
-            ''
+            'Besondere Aufgaben'
         ],
-        email: '',
-        number: ''
+        email: 'justinceronio@outlook.com',
+        number: '076 815 11 15'
     },
     {
         name: "Patricia Stauffer",
-        function: "",
-        tasks: [
-            '',
-            '',
-            '',
-            ''
-        ],
-        email: '',
-        number: ''
+        function: "Burgerschreiberin / Burgerkassierin",
+        email: 'pasta@bluewin.ch',
+        number: '079 422 85 14'
     },
 ];
 ---
@@ -78,7 +69,7 @@ const members = [
                         <h2 class="name text-lg mb-2">{member.name}</h2>
                     <h3 class="function font-bold mb-2">{member.function}</h3>
                     <ul class="list-disc pl-4 mb-4">
-                        {member.tasks.map((task) => (
+                        {member.tasks?.map((task) => (
                             <li>{task}</li>
                         ))}
                     </ul>
@@ -90,5 +81,56 @@ const members = [
                 </div>
             ))}
         </div>
+        <div class="organisation-header lg:text-5xl text-gray-900 mt-8 lg:mt-16">
+            <h1>Gesamtorganisation</h1>
+        </div>
+        <div class="organisation-container">
+            <hr class="mt-6">
+            <ul class="list-disc pl-4 py-4">
+                <li>Burgergemeindeversammlung</li>
+                <li>Rechnungsprüfungsorgan</li>
+                <li>Verwaltung Patricia Stauffer</li>
+                <li>Regierungsstatthalteramt</li>
+                <li>Regierungsrat – AGR</li>
+            </ul>
+            <hr>
+            <ul class="list-disc pl-4 py-4">
+                <li>Weggenossenschaft Rösti – Stutzwald, Därligen</li>
+                <li>Weggenossenschaft Abendberg (Wilderswil, Därligen, Saxeten)</li>
+            </ul>
+            <hr>
+            <ul class="list-disc pl-4 py-4">
+                <li>Verband Bernischer Burgergemeinden- und Korporationen</li>
+                <li>Kollektivmitglied Verband schweizerischer Burgergemeinden- und Korporationen</li>
+            </ul>
+            <hr>
+            <ul class="list-disc pl-4 py-4">
+                <li>Forstbetrieb Thunersee – Süd</li>
+                <li>Angeschlossen Burgergemeinde Därligen, Burgergemeinde Leissigen, Einwohnergemeinde Leissigen, Burgergemeinde Krattigen, Einwohnergemeinde Krattigen, Einwohnergemeinde Aeschi, Burgergemeinde Wimmis</li>
+                <li>Waldabteilung Alpen, Schlossgasse 6, 3752 Wimmis</li>
+                <li>Amt für Wald und Naturgefahren, Waldabteilung Alpen, Bern</li>
+                <li>BAFU, Bundesamt für Umwelt</li>
+            </ul>
+            <hr>
+            <ul class="list-disc pl-4 py-4">
+                <li>Waldbesitzerverband Frutigland</li>
+                <li>Berner Waldbesitzer BWB (Präsident Werner Wyss, Landwirt, 3422 Kirchberg <a class="hover:text-blue-800 hover:underline" href="http://www.bwb-pfb.ch">www.bwb-pfb.ch</a>)</li>
+                <li>Angeschlossen Berner Holzförderungsfonds BHFF</li>
+                <li>Gemeindeverband für die Erhaltung der Wälder in der Region Oberland Ost (GEWO) (Mitglied/Geldgeber sind die politischen Gemeinden altes Amt Interlaken. Die BGD erhält Beiträge an die Holzernte, Jungwuchspflege und an Weganlagen bei Schadenereignissen</li>
+            </ul>
+        </div>
     </div>
 </Layout>
+
+<style>
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer components {
+        .organisation-container  li {
+            @apply py-2;
+        }
+    }
+    
+</style>
