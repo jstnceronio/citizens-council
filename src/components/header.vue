@@ -32,7 +32,7 @@
         </div>-->
         
         <!-- Mobile menu button -->
-        <button class="flex 2xl:hidden items-center z-10 mb-4 order-1" @click="toggle()">
+        <button class="flex 2xl:hidden items-center z-10 mb-4 order-1 max-w-[8rem]" @click="toggle()">
             <div class="space-y-1">
                 <span ref="upper" class="block h-0.5 w-6 bg-black"></span>
                 <span ref="middle" class="block h-0.5 w-6 bg-black"></span>
