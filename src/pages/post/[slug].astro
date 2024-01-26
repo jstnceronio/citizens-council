@@ -20,7 +20,10 @@ const { title, body } = Astro.props;
 ---
 <Layout class="min-h-screen">
   <div class="post-wrapper p-16 min-h-[26rem]">
-    <h1 class="text-5xl text-gray-900 mb-8">{title}</h1>
+    
+    <a href="/" class="hover:underline text-sm">← Zurück zur Übersicht</a>
+ 
+    <h1 class="text-5xl text-gray-900 my-8">{title}</h1>
 
     <PortableText portableText={body} />
   </div>
