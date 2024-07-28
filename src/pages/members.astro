@@ -12,7 +12,8 @@ const members = [
             'Budget, Finanzen'
         ],
         email: 'walter.dietrich@gmx.ch',
-        number: '079 656 07 76'
+        number: '079 656 07 76',
+        img: 'Dietrich.png'
     },
     {
         name: "Monika Schärz",
@@ -24,7 +25,8 @@ const members = [
             'Verträge'
         ],
         email: 'm.schaerz@hotmail.de',
-        number: '079 382 75 63'
+        number: '079 382 75 63',
+        img: 'Schaerz.png'
     },
     {
         name: "Daniela Steuri",
@@ -36,7 +38,8 @@ const members = [
             'Forst'
         ],
         email: 'daniela.steurikadel@gmx.net',
-        number: ''
+        number: '',
+        img: 'Steuri.png'
     },
     {
         name: "Justin Ceronio",
@@ -45,13 +48,15 @@ const members = [
             'Besondere Aufgaben'
         ],
         email: 'justinceronio@outlook.com',
-        number: '076 815 11 15'
+        number: '076 815 11 15',
+        img: 'Steuri.png'
     },
     {
         name: "Patricia Stauffer",
         function: "Burgerschreiberin / Burgerkassierin",
         email: 'pasta@bluewin.ch',
-        number: '079 422 85 14'
+        number: '079 422 85 14',
+        img: 'blank.png'
     },
 ];
 ---
@@ -61,18 +66,19 @@ const members = [
         <div class="members-header text-5xl text-gray-900 mb-8">
             <h1>Mitglieder</h1>
         </div>
-        <div class="member-rows grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full">
+        <div class="member-rows grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full md:mx-auto">
             {members.map((member) => (
-                <div class="member text-sm flex flex-col">
-                    <div class="coat-of-arms w-36 h-36 mb-4 mr-8 bg-gray-200 items-center justify-center"></div>
+                <div class="member text-sm flex flex-col md:mx-auto md:text-center">
+                    <div class="coat-of-arms bg-gray-200 "></div>
+                    <img src={member.img} class="coat-image w-32 mb-4 md:ml-10" alt="coat of arms">
                     <div class="text-wrapper">
                         <h2 class="name text-lg mb-2">{member.name}</h2>
                     <h3 class="function font-bold mb-2">{member.function}</h3>
-                    <ul class="list-disc pl-4 mb-4">
+                    <div class="md:pl-4 mb-4">
                         {member.tasks?.map((task) => (
-                            <li>{task}</li>
+                            <p>{task}</p>
                         ))}
-                    </ul>
+                    </div>
                     <span class="contacts">
                         {member.email} <br />
                         {member.number}
@@ -118,6 +124,7 @@ const members = [
                 <li>Gemeindeverband für die Erhaltung der Wälder in der Region Oberland Ost (GEWO) (Mitglied/Geldgeber sind die politischen Gemeinden altes Amt Interlaken. Die BGD erhält Beiträge an die Holzernte, Jungwuchspflege und an Weganlagen bei Schadenereignissen</li>
             </ul>
         </div>
+        <img src="organigramm.png" class="organisation-image sm:w-[40rem] mt-8 mb-4 mx-auto" alt="Organigramm">
     </div>
 </Layout>
 
