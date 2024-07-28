@@ -13,5 +13,8 @@ export default defineConfig({
     dataset: 'production',
     apiVersion: '2023-02-08',
     useCdn: false,
-  })]
+  })],
+  experimental: {
+		viewTransitions: true
+	}
 });

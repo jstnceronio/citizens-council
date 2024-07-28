@@ -26,6 +26,7 @@
     <hr class="mt-4 sm:mt-12">
     <div class="desktop-menu">
         <a href="/" class="menu-item">Startseite</a>
+        <a href="/task" class="menu-item">Aufgaben</a>
         <a href="/members" class="menu-item">Behörde / Verwaltung</a>
         <a href="/history" class="menu-item">Geschichte</a>
         <a href="/regulations" class="menu-item">Reglemente</a>
@@ -43,6 +44,7 @@
         v-if="isOpen"
         >
             <a href="/" class="menu-item">Startseite</a>
+            <a href="/task" class="menu-item">Aufgaben</a>
             <a href="/members" class="menu-item">Behörde / Verwaltung</a>
             <a href="/history" class="menu-item">Geschichte</a>
             <a href="/regulations" class="menu-item">Reglemente</a>
