@@ -8,6 +8,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ["Montserrat", "Lora", ...defaultTheme.fontFamily.sans],
+				serif: ['Caudex', 'Georgia', ...defaultTheme.fontFamily.serif],
 			},
 		},
 	},

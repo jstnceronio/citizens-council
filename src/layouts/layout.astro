@@ -9,6 +9,24 @@ import Footer from "../components/footer.astro";
 		<link rel="icon" type="image/x-icon" href="/logo.png">
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link href="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.css" rel="stylesheet">
+		<script src="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.js"></script>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+			.caudex-bold {
+				font-family: "Caudex", serif;
+				font-weight: 700;
+				font-style: normal;
+			}
+		</style>
+		<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoianVzdGluY2Vyb25pbyIsImEiOiJjbHo5eXY3d2owZnRjMnNxemlibThqbGdnIn0.oR70bk3u4Uc4hk-nEBrbGw';
+			const map = new mapboxgl.Map({
+				container: 'map', // container ID
+				center: [-74.5, 40], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+				zoom: 9 // starting zoom
+			});
+		</script>	
 		<title>Burgergemeinde Därligen</title>
 	</head>
 	<body class="h-screen bg-[#F5F5F5] lg:px-32 2xl:px-64">
