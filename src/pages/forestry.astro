@@ -1,9 +1,12 @@
 ---
 import Layout from '../layouts/layout.astro'
+import Map from '../components/map.vue'
 ---
 
 <Layout>
     <div class="forestry-wrapper p-8 md:p-16">
+        <Map client:only="vue" />
+
         <h1 class="forestry-header text-5xl text-gray-900 mb-8">
 			Forstbetrieb Thunersee Süd
 		</h1>
@@ -17,3 +20,4 @@ import Layout from '../layouts/layout.astro'
         <img src="fourth.png" class="forestry-image mt-8 mb-4" alt="Vogelperspektive">
     </div>
 </Layout>
+
