@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/layout.astro'
+import Map from '../components/map.vue'
 ---
 
 <Layout>
@@ -8,6 +9,6 @@ import Layout from '../layouts/layout.astro'
 			Verwaltungskreis
 		</h1>
         <span class="text-sm">Verwende die interaktive Karte um Därligens Vielfalt zu erkunden.</span>
-        <div id="map"></div>
+        <Map client:only="vue" />
     </div>
 </Layout>
