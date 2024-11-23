@@ -22,9 +22,6 @@ function truncateText(text: any) {
             <li class="event-header text-xl font-medium hover:underline">
                 <a href={`/post/${post.slug?.current}`}>{post.title}</a>
             </li>
-            <li class="event-description mt-4">
-                Publiziert am {new Date(post._createdAt).toLocaleDateString("de-CH")}
-            </li>
             <li class="event-description text-sm">
                 {truncateText(post.body[0].children[0].text)} <!-- TODO: what if there is no body? -->
             </li>
