@@ -1,6 +1,14 @@
 ---
 import Layout from "../layouts/layout.astro";
 
+// const memberData = {
+//   name: "John Doe",
+//   function: "Developer",
+//   tasks: ["Coding", "Review", "Documentation"],
+//   email: "john@example.com",
+//   number: "123-456-7890",
+//   img: "Steuri.png"
+// };
 const members = [
     {
         name: "Walter Dietrich",
@@ -54,37 +62,29 @@ const members = [
     {
         name: "Patricia Stauffer",
         function: "Burgerschreiberin / Burgerkassierin",
+        tasks: [
+            'Administrative Aufgaben'
+        ],
         email: 'pasta@bluewin.ch',
         number: '079 422 85 14',
-        img: 'blank.png'
+        img: ''
     },
 ];
+
+import MemberCard from '../components/member-card.astro'
 ---
 
 <Layout>
+
+    
+
     <div class="members-container p-8 md:p-16">
         <div class="members-header text-5xl text-gray-900 mb-8">
             <h1>Mitglieder</h1>
         </div>
-        <div class="member-rows grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full md:mx-auto">
+        <div class="member-rows flex flex-wrap gap-4 w-full md:mx-auto">
             {members.map((member) => (
-                <div class="member text-sm flex flex-col md:mx-auto md:text-center">
-                    <div class="coat-of-arms bg-gray-200 "></div>
-                    <img src={member.img} class="coat-image w-32 mb-4 md:ml-10" alt="coat of arms">
-                    <div class="text-wrapper">
-                        <h2 class="name text-lg mb-2">{member.name}</h2>
-                    <h3 class="function font-bold mb-2">{member.function}</h3>
-                    <div class="md:pl-4 mb-4">
-                        {member.tasks?.map((task) => (
-                            <p>{task}</p>
-                        ))}
-                    </div>
-                    <span class="contacts">
-                        {member.email} <br />
-                        {member.number}
-                    </span>
-                    </div>
-                </div>
+                <MemberCard member={member} />
             ))}
         </div>
         <div class="organisation-wrapper xl:flex">

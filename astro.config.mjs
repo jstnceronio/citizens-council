@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import vue from "@astrojs/vue";
-
 import sanity from "@sanity/astro";
+
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,9 +13,9 @@ export default defineConfig({
     projectId: 'j63jnjq3',
     dataset: 'production',
     apiVersion: '2023-02-08',
-    useCdn: false,
-  })],
+    useCdn: false
+  }), icon()],
   experimental: {
-		viewTransitions: true
-	}
+    viewTransitions: true
+  }
 });
