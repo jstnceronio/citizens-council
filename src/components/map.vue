@@ -21,7 +21,7 @@
       },
     },
     mounted() {
-      mapboxgl.accessToken = "";
+      mapboxgl.accessToken = "pk.eyJ1IjoianVzdGluY2Vyb25pbyIsImEiOiJjbHoybGIwOGIweWpxMnNwZjF0Mmx1Z3V4In0.xPxdA5TUiG6v8xrAJtHWfQ";
   
       this.map = new mapboxgl.Map({
         container: this.$refs.mapContainer,

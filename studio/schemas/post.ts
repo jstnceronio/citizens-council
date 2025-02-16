@@ -40,6 +40,12 @@ export default defineType({
       of: [{type: 'reference', to: {type: 'category'}}],
     }),
     defineField({
+      name: 'pdfPath',
+      title: 'PDF Path',
+      type: 'string',
+      description: 'Enter the relative path to the PDF (e.g., /pdfs/my-document.pdf)'
+    }),
+    defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
