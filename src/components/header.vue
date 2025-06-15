@@ -87,24 +87,57 @@
 }
 
 .mobile-menu-button {
-  @apply flex 2xl:hidden items-center z-10 mb-4 order-1 max-w-[8rem];
+  @apply flex 2xl:hidden items-center z-50 mb-4 order-1 max-w-[8rem];
 }
 
 .mobile-menu {
-  @apply 2xl:hidden flex flex-col gap-16 uppercase fixed backdrop-blur-md bg-white/30 bottom-0 left-0 w-full h-screen items-center justify-center;
+  @apply 2xl:hidden flex flex-col gap-8 uppercase fixed backdrop-blur-lg bg-white/80 bottom-0 left-0 w-full h-screen items-center justify-center z-40;
 }
 
 a:hover {
   color: #00579f;
 }
 
+/* Base menu item styles */
 .menu-item {
-  @apply relative ml-16 text-base;
+  @apply relative transition-all duration-300;
 }
+
+/* Desktop menu items */
+.desktop-menu .menu-item {
+  @apply ml-16 text-base;
+}
+
+/* Mobile menu items */
+.mobile-menu .menu-item {
+  @apply text-lg font-medium py-3 px-6 hover:scale-105;
+}
+
+/* Animation for menu items */
+.mobile-menu a {
+  @apply opacity-0 translate-y-4;
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add delay for each menu item */
+.mobile-menu a:nth-child(1) { animation-delay: 0.1s; }
+.mobile-menu a:nth-child(2) { animation-delay: 0.2s; }
+.mobile-menu a:nth-child(3) { animation-delay: 0.3s; }
+.mobile-menu a:nth-child(4) { animation-delay: 0.4s; }
+.mobile-menu a:nth-child(5) { animation-delay: 0.5s; }
+.mobile-menu a:nth-child(6) { animation-delay: 0.6s; }
+.mobile-menu a:nth-child(7) { animation-delay: 0.7s; }
 </style>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onUnmounted } from "vue";
 import { useMotions, useMotion } from "@vueuse/motion";
 
 /* Mobile menu, animations */
@@ -119,7 +152,19 @@ const toggle = () => {
   rotateUpper();
   rotateMiddle();
   toggleLower();
+  
+  // Prevent scrolling when menu is open
+  if (isOpen.value) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
 };
+
+// Clean up on component unmount
+onUnmounted(() => {
+  document.body.style.overflow = '';
+});
 
 const { apply: applyUpper } = useMotion(upper, {
   enter: {
