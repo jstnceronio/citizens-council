@@ -1,14 +1,6 @@
 ---
 import Layout from "../layouts/layout.astro";
 
-// const memberData = {
-//   name: "John Doe",
-//   function: "Developer",
-//   tasks: ["Coding", "Review", "Documentation"],
-//   email: "john@example.com",
-//   number: "123-456-7890",
-//   img: "Steuri.png"
-// };
 const members = [
     {
         name: "Walter Dietrich",
@@ -46,7 +38,7 @@ const members = [
             'Forst'
         ],
         email: 'daniela.steurikadel@gmx.net',
-        number: '',
+        number: ' ',
         img: 'Steuri.png'
     },
     {
@@ -75,71 +67,137 @@ import MemberCard from '../components/member-card.astro'
 ---
 
 <Layout>
-
-    
-
-    <div class="members-container p-8 md:p-16">
-        <div class="members-header text-5xl text-gray-900 mb-8">
-            <h1>Mitglieder</h1>
+    <div class="members-container max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <!-- Hero Section -->
+        <div class="relative mb-12 sm:mb-16">
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50 -z-10"></div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900">
+                Mitglieder
+            </h1>
         </div>
-        <div class="member-rows flex flex-wrap gap-4 w-full md:mx-auto">
-            {members.map((member) => (
-                <MemberCard member={member} />
-            ))}
-        </div>
-        <div class="organisation-wrapper xl:flex">
-            <div class="wrapper-left organisation-container">
-                <div class="organisation-header lg:text-5xl text-gray-900 mt-8 lg:mt-16">
-                    <h1>Links / Mitgliedschaften</h1>
+
+        <!-- Members Section -->
+        <div class="relative mb-16 sm:mb-24">
+            <!-- Background decoration -->
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50 -z-10 rounded-3xl"></div>
+            
+            <!-- Members Grid -->
+            <div class="relative">
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+                    {members.map((member) => (
+                        <MemberCard member={member} />
+                    ))}
                 </div>
-                <hr class="mt-6">
+            </div>
+        </div>
 
-                <h2 class="font-bold mt-8 uppercase">Aufsicht</h2>
-                <ul class="list-disc pl-4 py-4">
-                    <li><a href="https://www.rsta.dij.be.ch/de/start.html">Regierungsstatthalteramt Interlaken-Oberhasli</a></li>
-                    <li>Amt für Gemeinden und Raumordnung AGR</li>
-                    <li>Amt für Wald und Naturgefahren, Waldabteilung Alpen</li>
-                    <li>BAFU Bundesamt für Umwelt</li>
-                </ul>
-                    
-                <h2 class="font-bold mt-8 uppercase">Verbandsmitgliedschaften (Bund/Kanton)</h2>
-                <ul class="list-disc pl-4 py-4">
-                    <li>Weggenossenschaft Abendberg (Wilderswil, Därligen, Saxeten)</li>
-                    <li>Waldbesitzerverband Frutigland</li>
-                    <li>Gemeindeverband für die Erhaltung der Wälder in der Region Oberland Ost (GEWO)</li>
-                    Mitglied/Geldgeber sind die politischen Gemeinden im ehemaligen Amtsbezirk Interlaken. Die BGD erhält Beiträge an die Holzernte, Jungwuchspflege und an Weganlagen nach Schadenereignissen
-                </ul>
+        <!-- Organization Section -->
+        <div class="organisation-wrapper xl:flex gap-8 xl:gap-16 mb-16 sm:mb-24">
+            <div class="wrapper-left flex-1">
+                <div class="xl:sticky xl:top-8">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-6 sm:mb-8">
+                        Mitgliedschaften
+                    </h2>
+                    <hr class="border-gray-200 mb-8 sm:mb-12">
 
-                <h2 class="font-bold mt-8 uppercase">Mitgliedschaften regional</h2>
-                <ul class="list-disc pl-4 py-4">
-                    <li><a href="https://www.vbbg.ch/">Verband Berner Burgergemeinden und burgerlicher Korporationen</a></li>
-                    <li><a href="https://www.svbk.ch/">Schweizerischer Verband der Bürgergemeinden und Korporationen</a></li>
-                    <li>Lignum Holzwirtschaft Bern bzw. BEO HOLZ, angeschlossen Berner Holzförderungsfonds BHFF</li>
-                </ul>
+                    <div class="space-y-12 sm:space-y-16">
+                        <section>
+                            <h3 class="text-lg sm:text-xl font-medium text-gray-900 mb-4 sm:mb-6 flex items-center">
+                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-100 flex items-center justify-center mr-3 text-sm sm:text-base">1</span>
+                                Aufsicht
+                            </h3>
+                            <ul class="space-y-2 sm:space-y-3 pl-10 sm:pl-11">
+                                <li class="flex items-center">
+                                    <a href="https://www.rsta.dij.be.ch/de/start.html" class="text-gray-900 hover:text-gray-600 transition-colors text-sm sm:text-base">
+                                        Regierungsstatthalteramt Interlaken-Oberhasli
+                                    </a>
+                                </li>
+                                <li class="text-sm sm:text-base">Amt für Gemeinden und Raumordnung AGR</li>
+                                <li class="text-sm sm:text-base">Amt für Wald und Naturgefahren, Waldabteilung Alpen</li>
+                                <li class="text-sm sm:text-base">BAFU Bundesamt für Umwelt</li>
+                            </ul>
+                        </section>
+                            
+                        <section>
+                            <h3 class="text-lg sm:text-xl font-medium text-gray-900 mb-4 sm:mb-6 flex items-center">
+                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-100 flex items-center justify-center mr-3 text-sm sm:text-base">2</span>
+                                Verbandsmitgliedschaften
+                            </h3>
+                            <ul class="space-y-2 sm:space-y-3 pl-10 sm:pl-11">
+                                <li class="text-sm sm:text-base">Weggenossenschaft Abendberg (Wilderswil, Därligen, Saxeten)</li>
+                                <li class="text-sm sm:text-base">Waldbesitzerverband Frutigland</li>
+                                <li class="text-sm sm:text-base">Gemeindeverband für die Erhaltung der Wälder in der Region Oberland Ost (GEWO)</li>
+                            </ul>
+                            <p class="mt-4 text-gray-600 pl-10 sm:pl-11 text-sm sm:text-base">
+                                Mitglied/Geldgeber sind die politischen Gemeinden im ehemaligen Amtsbezirk Interlaken. Die BGD erhält Beiträge an die Holzernte, Jungwuchspflege und an Weganlagen nach Schadenereignissen
+                            </p>
+                        </section>
 
-                <h2 class="font-bold mt-8 uppercase">Mitgliedschaft kommunal</h2>
-                <ul class="list-disc pl-4 py-4">
-                    <li>Weggenossenschaft Rösti – Stutzwald, Därligen</li>
+                        <section>
+                            <h3 class="text-lg sm:text-xl font-medium text-gray-900 mb-4 sm:mb-6 flex items-center">
+                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-100 flex items-center justify-center mr-3 text-sm sm:text-base">3</span>
+                                Mitgliedschaften regional
+                            </h3>
+                            <ul class="space-y-2 sm:space-y-3 pl-10 sm:pl-11">
+                                <li>
+                                    <a href="https://www.vbbg.ch/" class="text-gray-900 hover:text-gray-600 transition-colors text-sm sm:text-base">
+                                        Verband Berner Burgergemeinden und burgerlicher Korporationen
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.svbk.ch/" class="text-gray-900 hover:text-gray-600 transition-colors text-sm sm:text-base">
+                                        Schweizerischer Verband der Bürgergemeinden und Korporationen
+                                    </a>
+                                </li>
+                                <li class="text-sm sm:text-base">Lignum Holzwirtschaft Bern bzw. BEO HOLZ, angeschlossen Berner Holzförderungsfonds BHFF</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3 class="text-lg sm:text-xl font-medium text-gray-900 mb-4 sm:mb-6 flex items-center">
+                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-100 flex items-center justify-center mr-3 text-sm sm:text-base">4</span>
+                                Mitgliedschaft kommunal
+                            </h3>
+                            <ul class="space-y-2 sm:space-y-3 pl-10 sm:pl-11">
+                                <li class="text-sm sm:text-base">Weggenossenschaft Rösti – Stutzwald, Därligen</li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assembly Section -->
+        <div class="additional-info bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 sm:p-8 md:p-12 border border-gray-100">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-6 sm:mb-8">
+                Burgergemeindeversammlung
+            </h2>
+            <hr class="border-gray-200 mb-6 sm:mb-8">
+
+            <div class="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
+                <p class="text-gray-900 mb-4 sm:mb-6">
+                    Oberstes Organ sind die stimmberechtigten Burgerinnen und Burger mit Wohnsitz im Verwaltungskreis Interlaken-Oberhasli. Sie treffen sich jährlich mindestens zu zwei Versammlungen. Im ersten Halbjahr zur Genehmigung der Rechnung und im zweiten Halbjahr zur Beschlussfassung über das Budget der Erfolgsrechnung. Sie wählen den Präsidenten, den Vizepräsidenten und die Burgerräte.
+                </p>
+                <p class="text-gray-900 mb-3 sm:mb-4 font-medium">Stimmberechtigt sind</p>
+                <ul class="space-y-2 sm:space-y-3 text-gray-900">
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gray-400 mt-1.5 sm:mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
+                        <span class="text-sm sm:text-base">Burgerinnen und Burger, die in Därligen Wohnsitz haben und Auswärtige mit 
+                            Wohnsitz im Verwaltungskreis Interlaken-Oberhasli, die sich im Stimmregister 
+                            eingetragen haben</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gray-400 mt-1.5 sm:mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
+                        <span class="text-sm sm:text-base">in kantonalen Angelegenheiten stimmberechtigt sind</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gray-400 mt-1.5 sm:mt-2 mr-2 sm:mr-3 flex-shrink-0"></span>
+                        <span class="text-sm sm:text-base">Die Stimmberechtigten werden gebeten, Mitteilungen betreffend Adresse oder Zivilstand der Burgergemeinde zu melden, damit Informationen zuverlässig zugestellt werden können.</span>
+                    </li>
                 </ul>
             </div>
-            <img src="organigramm.png" class="organisation-image sm:h-[32rem] mt-8 mb-4 mx-auto" alt="Organigramm">
         </div>
-        <div class="additional-info">
-        <div class="organisation-header lg:text-5xl text-gray-900 mt-8 lg:mt-16">
-            <h1>Burgergemeindeversammlung</h1>
-        </div>
-        <hr class="mt-6 mb-8">
-
-        <p>Oberstes Organ sind die stimmberechtigten Burgerinnen und Burger mit Wohnsitz im Verwaltungskreis Interlaken-Oberhasli. Sie treffen sich jährlich mindestens zu zwei Versammlungen. Im ersten Halbjahr zur Genehmigung der Rechnung und im zweiten Halbjahr zur Beschlussfassung über das Budget der Erfolgsrechnung. Sie wählen den Präsidenten, den Vizepräsidenten und die Burgerräte.</p>
-        <p>Stimmberechtigt sind</p>
-        <ul class="list-disc pl-4 py-4">
-            <li>Burgerinnen und Burger, die in Därligen Wohnsitz haben und Auswärtige mit 
-  Wohnsitz im Verwaltungskreis Interlaken-Oberhasli, die sich im Stimmregister 
-  eingetragen haben</li>
-            <li>in kantonalen Angelegenheiten stimmberechtigt sind</li>
-            <li>Die Stimmberechtigten werden gebeten, Mitteilungen betreffend Adresse oder Zivilstand der Burgergemeinde zu melden, damit Informationen zuverlässig zugestellt werden können.</li>
-        </ul>
-    </div>
     </div>
 </Layout>
 
@@ -147,11 +205,4 @@ import MemberCard from '../components/member-card.astro'
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
-
-    @layer components {
-        .organisation-container  li {
-            @apply py-2;
-        }
-    }
-    
 </style>
