@@ -1,12 +1,36 @@
-<div class="footer-container w-full text-white bottom-0 row-start-3">
-  <div class="upper-footer bg-[#00579F] w-full p-8">
+<div class="footer-container">
+  <div class="upper-footer">
     Burgergemeinde Därligen <br />
     Chrützweg 14 <br />
     3707 Därligen <br />
     info@burger-daerligen.ch
   </div>
-  <div class="lower-footer bg-[#02447A] p-8 flex">
-    <a href="https://daerligburger.sanity.studio/" class="footer-action underline hover:text-black">Login</a>
-    <div class="footer-info ml-16">© 2025 Burgergemeinde Därligen</div>
+  <div class="lower-footer">
+    <a href="https://daerligburger.sanity.studio/" class="footer-action"
+      >Login</a
+    >
+    <div class="footer-info">© 2025 Burgergemeinde Därligen</div>
   </div>
 </div>
+
+<style>
+  .footer-container {
+    @apply w-full text-white bottom-0 row-start-3;
+  }
+
+  .upper-footer {
+    @apply bg-[#00579F] w-full p-8;
+  }
+
+  .lower-footer {
+    @apply bg-[#02447A] p-8 flex;
+  }
+
+  .footer-action {
+    @apply underline hover:text-black;
+  }
+
+  .footer-info {
+    @apply ml-16;
+  }
+</style>
