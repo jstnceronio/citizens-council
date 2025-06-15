@@ -3,29 +3,31 @@ import Layout from "../layouts/layout.astro";
 ---
 
 <Layout>
-    <div class="property-wrapper p-8 md:p-16">
-        <h1 class="property-header text-5xl text-gray-900 mb-8">
-			Liegenschaften
-		</h1>
-        <p>
-            Wie bereits ausgeführt gehört der Burgergemeinde fast die halbe Gemeindefläche, nämlich 46 % oder 434 ha. Der grösste Teil ist Wald, Wiesland und unproduktives Land. Insbesondere verfügt die Burgergemeinde über kein Bauland. Aus diesem Grunde sind die Einkünfte sehr beschränkt. In der Erli werden 12 Abstellplätze vermietet. Weiter betreibt die Burgergemeinde eine Alpwirtschaft und stellt dafür während der Alpzeit jeweils einen Älpler an. Zur Alpwirtschaft gehören das Fenki, der Ällenboden und die Ankenweide. Die Burgergemeinde besitzt über zahlreiche Gebäude, welche es zu unterhalten gilt. Ein Verwaltungsgebäude besteht nicht, die Sitzungen können in der Gemeindeverwaltung durchgeführt werden. Nach einer sehr aufwendigen Planung wurde eine Geschiebedeponie beschlossen, welche das Amt für Gemeinden und Raumordnung genehmigte. Dadurch können weite Transportwege und insbesondere Kosten gespart werden. Die Burgergemeinde ist Mitglied der Weggenossenschaft Därligen mit einem Anteil von 78 %.
-        </p>
-        <div class="property-images-wrapper flex flex-wrap mt-8 justify-between">
-            <div class="text-center">
-                <h3>Unser schöner Wald</h3>
-                <img src="/forest.jpg" class="max-w-64">
+    <div class="property-wrapper max-w-7xl mx-auto px-8 sm:px-6 lg:px-16 py-12">
+        <h1 class="property-header text-4xl md:text-5xl text-gray-900 mb-8">
+            Liegenschaften
+        </h1>
+        <div class="prose prose-lg max-w-none mb-16">
+            <p class="text-gray-900">
+                Wie bereits ausgeführt gehört der Burgergemeinde fast die halbe Gemeindefläche, nämlich 46 % oder 434 ha. Der grösste Teil ist Wald, Wiesland und unproduktives Land. Insbesondere verfügt die Burgergemeinde über kein Bauland. Aus diesem Grunde sind die Einkünfte sehr beschränkt. In der Erli werden 12 Abstellplätze vermietet. Weiter betreibt die Burgergemeinde eine Alpwirtschaft und stellt dafür während der Alpzeit jeweils einen Älpler an. Zur Alpwirtschaft gehören das Fenki, der Ällenboden und die Ankenweide. Die Burgergemeinde besitzt über zahlreiche Gebäude, welche es zu unterhalten gilt. Ein Verwaltungsgebäude besteht nicht, die Sitzungen können in der Gemeindeverwaltung durchgeführt werden. Nach einer sehr aufwendigen Planung wurde eine Geschiebedeponie beschlossen, welche das Amt für Gemeinden und Raumordnung genehmigte. Dadurch können weite Transportwege und insbesondere Kosten gespart werden. Die Burgergemeinde ist Mitglied der Weggenossenschaft Därligen mit einem Anteil von 78 %.
+            </p>
+        </div>
+        <div class="property-images-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="group">
+                <img src="/forest.jpg" alt="Unser schöner Wald" class="w-full h-48 object-cover mb-2">
+                <h3 class="text-lg text-gray-900">Unser schöner Wald</h3>
             </div>
-            <div class="text-center">
-                <h3>Fenkischeune</h3>
-                <img src="/hut.jpg" class="">
+            <div class="group">
+                <img src="/hut.jpg" alt="Fenkischeune" class="w-full h-48 object-cover mb-2">
+                <h3 class="text-lg text-gray-900">Fenkischeune</h3>
             </div>
-            <div class="text-center">
-                <h3>Ankeweid</h3>
-                <img src="/ankeweid.jpg" class="">
+            <div class="group">
+                <img src="/ankeweid.jpg" alt="Ankeweid" class="w-full h-48 object-cover mb-2">
+                <h3 class="text-lg text-gray-900">Ankeweid</h3>
             </div>
-            <div class="text-center">
-                <h3>Schutzhütte</h3>
-                <img src="/schutzhütte.jpg" class="">
+            <div class="group">
+                <img src="/schutzhütte.jpg" alt="Schutzhütte" class="w-full h-48 object-cover mb-2">
+                <h3 class="text-lg text-gray-900">Schutzhütte</h3>
             </div>
         </div>
     </div>
