@@ -29,7 +29,7 @@
     <a href="/task" class="menu-item">Aufgaben</a>
     <a href="/members" class="menu-item">Verwaltung</a>
     <a href="/history" class="menu-item">Geschichte</a>
-    <a href="/regulations" class="menu-item">Reglemente</a>
+    <a href="/regulations" class="menu-item">Dokumente</a>
     <a href="/property" class="menu-item">Liegenschaften</a>
     <a href="/forestry" class="menu-item">Forstbetrieb</a>
   </div>
@@ -47,7 +47,7 @@
     <a href="/task" class="menu-item">Aufgaben</a>
     <a href="/members" class="menu-item">Verwaltung</a>
     <a href="/history" class="menu-item">Geschichte</a>
-    <a href="/regulations" class="menu-item">Reglemente</a>
+    <a href="/regulations" class="menu-item">Dokumente</a>
     <a href="/property" class="menu-item">Liegenschaften</a>
     <a href="/forestry" class="menu-item">Forstbetrieb</a>
   </div>
@@ -152,7 +152,7 @@ const toggle = () => {
   rotateUpper();
   rotateMiddle();
   toggleLower();
-  
+
   // Prevent scrolling when menu is open
   if (isOpen.value) {
     document.body.style.overflow = 'hidden';
