@@ -1,35 +1,76 @@
 ---
-// the loading of the posts shouldn't impede the loading of the whole page ..
-
 import { useSanityClient } from '@sanity/astro';
 
-const posts = await useSanityClient().fetch(`*[_type == "post"]`); // todo: sort me by date
 const maxTextPreviewLength = 200;
 
-function truncateText(text: any) {
+// Try to load posts, but don't let errors crash the whole page
+let posts: any[] = [];
+
+try {
+  posts = await useSanityClient().fetch(
+    `*[_type == "post"] | order(publishedAt desc)`
+  );
+} catch (err) {
+  console.error('Failed to load posts from Sanity', err);
+  posts = []; // fall back to empty list so the rest of the page still renders
+}
+
+function truncateText(text: string) {
+  if (!text) return '';
+
   if (text.length <= 50) {
     return text;
   } else {
-    return text.substring(0, maxTextPreviewLength) + "[...]";
+    return text.substring(0, maxTextPreviewLength) + '[...]';
   }
+}
+
+// Safely extract preview text from a Sanity portable-text-like body
+function getPreviewText(post: any) {
+  if (!post?.body || !Array.isArray(post.body)) {
+    return 'Keine Vorschau verfügbar.';
+  }
+
+  // Find the first block with children
+  const firstBlock = post.body.find(
+    (block: any) =>
+      block?._type === 'block' && Array.isArray(block.children)
+  );
+
+  if (!firstBlock) return 'Keine Vorschau verfügbar.';
+
+  const text = firstBlock.children
+    .map((child: any) => child?.text ?? '')
+    .join(' ')
+    .trim();
+
+  if (!text) return 'Keine Vorschau verfügbar.';
+
+  return truncateText(text);
 }
 ---
 
 <div class="event-wrapper" id="custom-scrollbar">
-    {posts && <ul class="event-item  lg:py-0 lg:ml-8 lg:px-4 2xl:px-8">
-        {posts.map((post: any) => (
-        <div class="event-wrapper mb-4 max-w-lg md:max-w-xl">
-            <li class="event-header text-xl font-medium hover:underline">
-                <a href={`/post/${post.slug?.current}`}>{post.title}</a>
-            </li>
-            <li class="event-description text-sm">
-                {truncateText(post.body[0].children[0].text)} <!-- TODO: what if there is no body? -->
-            </li>
-            <br />
-            <hr />
-        </div>
-        ))}
-    </ul>}
+  {posts && posts.length > 0 ? (
+    <ul class="event-item lg:py-0 lg:ml-8 lg:px-4 2xl:px-8">
+      {posts.map((post: any) => (
+        <li class="event-wrapper mb-4 max-w-lg md:max-w-xl" key={post._id}>
+          <div class="event-header text-xl font-medium hover:underline">
+            <a href={`/post/${post.slug?.current}`}>{post.title}</a>
+          </div>
+          <div class="event-description text-sm">
+            {getPreviewText(post)}
+          </div>
+          <br />
+          <hr />
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="lg:ml-8 lg:px-4 2xl:px-8 text-sm italic">
+      No posts to display.
+    </p>
+  )}
 </div>
 
 <script>
@@ -45,6 +86,7 @@ function truncateText(text: any) {
     }
     console.log(screenSize);
   }
+
   window.addEventListener('resize', updateScreenSize);
   updateScreenSize();
 </script>
