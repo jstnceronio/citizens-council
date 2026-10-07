@@ -1,0 +1,263 @@
+---
+const navigation = [
+  { href: "/", label: "Startseite" },
+  { href: "/task", label: "Aufgaben" },
+  { href: "/members", label: "Verwaltung" },
+  { href: "/history", label: "Geschichte" },
+  { href: "/regulations", label: "Dokumente" },
+  { href: "/property", label: "Liegenschaften" },
+  { href: "/forestry", label: "Forstbetrieb" },
+];
+
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+---
+
+<header data-site-header transition:name="site-header">
+  <div class="upper-header">
+    <div class="header-text">
+      <img
+        src="/logo.png"
+        class="header-logo"
+        width="205"
+        height="246"
+        alt="Wappen der Burgergemeinde Därligen"
+      />
+
+      <div class="header-title">
+        <p class="header-title-main">DÄRLIGEN</p>
+        <p class="header-title-secondary">Burgergemeinde am Thunersee</p>
+      </div>
+    </div>
+
+    <button
+      class="mobile-menu-button"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+      data-menu-toggle
+    >
+      <span class="burger-icon" aria-hidden="true">
+        <span class="burger-line upper"></span>
+        <span class="burger-line middle"></span>
+        <span class="burger-line lower"></span>
+      </span>
+      <span class="font-medium ml-4">Menü</span>
+    </button>
+  </div>
+
+  <hr class="mt-4 sm:mt-12" />
+  <nav class="desktop-menu" aria-label="Hauptnavigation">
+    {navigation.map(({ href, label }) => (
+      <a href={href} class="menu-item" aria-current={isActive(href) ? "page" : undefined}>{label}</a>
+    ))}
+  </nav>
+  <hr />
+
+  <nav
+    id="mobile-navigation"
+    class="mobile-menu"
+    aria-label="Mobile Hauptnavigation"
+    data-mobile-menu
+    hidden
+  >
+    {navigation.map(({ href, label }) => (
+      <a href={href} class="menu-item" aria-current={isActive(href) ? "page" : undefined}>{label}</a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  const siteWindow = window as typeof window & { __siteHeaderInitialized?: boolean };
+
+  const setMenuOpen = (open: boolean) => {
+    const header = document.querySelector("[data-site-header]");
+    const toggle = header?.querySelector("[data-menu-toggle]");
+    const menu = header?.querySelector("[data-mobile-menu]");
+    if (!(toggle instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) return;
+
+    toggle.setAttribute("aria-expanded", String(open));
+    menu.hidden = !open;
+    document.body.style.overflow = open ? "hidden" : "";
+  };
+
+  if (!siteWindow.__siteHeaderInitialized) {
+    siteWindow.__siteHeaderInitialized = true;
+    const scrollPositions = new Map<string, number>();
+    let currentLocation = window.location.href;
+    let pendingScrollPosition: number | null = null;
+
+    const documentObserver = new MutationObserver(() => {
+      if (pendingScrollPosition === null) return;
+
+      const scrollPosition = pendingScrollPosition;
+      pendingScrollPosition = null;
+      requestAnimationFrame(() => window.scrollTo({ top: scrollPosition, left: 0, behavior: "auto" }));
+    });
+    documentObserver.observe(document, { childList: true });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const toggle = target.closest("[data-menu-toggle]");
+      if (toggle instanceof HTMLButtonElement) {
+        setMenuOpen(toggle.getAttribute("aria-expanded") !== "true");
+        return;
+      }
+
+      if (target.closest("[data-mobile-menu] a")) setMenuOpen(false);
+
+      const anchor = target.closest("a");
+      if (
+        anchor instanceof HTMLAnchorElement &&
+        anchor.origin === window.location.origin &&
+        (!anchor.target || anchor.target === "_self") &&
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.altKey &&
+        !event.shiftKey &&
+        anchor.href !== currentLocation
+      ) {
+        scrollPositions.set(currentLocation, window.scrollY);
+        pendingScrollPosition = 0;
+        currentLocation = anchor.href;
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    });
+
+    window.addEventListener("popstate", () => {
+      scrollPositions.set(currentLocation, window.scrollY);
+      pendingScrollPosition = scrollPositions.get(window.location.href) ?? 0;
+      currentLocation = window.location.href;
+    });
+  }
+</script>
+
+<style>
+  .upper-header {
+    @apply flex flex-col-reverse 2xl:flex-col justify-between text-gray-900 pt-8 sm:pt-16 mx-8 md:mx-16;
+  }
+
+  .header-title {
+    @apply flex-col lg:pl-8 mr-2 mt-2 md:mx-8 order-2;
+  }
+
+  .header-title-main {
+    @apply font-bold text-3xl lg:text-5xl;
+  }
+
+  .header-title-secondary {
+    @apply lg:mt-4 sm:text-xl lg:text-2xl;
+  }
+
+  .header-text {
+    @apply flex max-md:justify-between;
+  }
+
+  .header-logo {
+    @apply w-16 lg:w-24 h-auto order-3 md:order-1;
+  }
+
+  .mobile-menu-button {
+    @apply flex 2xl:hidden items-center z-50 mb-4 order-1 max-w-[8rem];
+  }
+
+  .burger-icon {
+    @apply relative block h-4 w-6;
+  }
+
+  .burger-line {
+    @apply absolute left-0 block h-0.5 w-6 bg-black transition-transform duration-200;
+  }
+
+  .burger-line.upper { top: 0; }
+  .burger-line.middle { top: 0.375rem; }
+  .burger-line.lower { top: 0.75rem; }
+
+  .mobile-menu-button[aria-expanded="true"] .upper {
+    transform: translateY(0.375rem) rotate(45deg);
+  }
+
+  .mobile-menu-button[aria-expanded="true"] .middle {
+    transform: rotate(-45deg);
+  }
+
+  .mobile-menu-button[aria-expanded="true"] .lower {
+    opacity: 0;
+  }
+
+  .desktop-menu {
+    @apply hidden 2xl:flex uppercase my-6 mr-16 justify-between;
+  }
+
+  .mobile-menu {
+    @apply 2xl:hidden flex flex-col gap-8 uppercase fixed bg-white/95 bottom-0 left-0 w-full h-screen items-center justify-center z-40;
+    animation: menu-in 180ms ease-out;
+  }
+
+  .mobile-menu[hidden] {
+    display: none;
+  }
+
+  .menu-item {
+    @apply relative transition-colors duration-200;
+  }
+
+  .menu-item:hover {
+    color: #00579f;
+  }
+
+  .menu-item[aria-current="page"] {
+    color: #00579f;
+  }
+
+  .menu-item[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -0.4rem;
+    left: 0;
+    height: 2px;
+    background: #00579f;
+    transform-origin: left;
+    animation: active-link-in 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .menu-item:focus-visible,
+  .mobile-menu-button:focus-visible {
+    outline: 2px solid #00579f;
+    outline-offset: 4px;
+  }
+
+  .desktop-menu .menu-item {
+    @apply ml-16 text-base;
+  }
+
+  .mobile-menu .menu-item {
+    @apply text-lg font-medium py-3 px-6;
+  }
+
+  @keyframes menu-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes active-link-in {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu,
+    .burger-line,
+    .menu-item[aria-current="page"]::after {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>

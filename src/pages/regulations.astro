@@ -139,6 +139,16 @@ import Layout from "../layouts/layout.astro";
             </table>
         </div>
 
-        <img src="third.png" class="regulations-image mt-8 mb-4" alt="Vogelperspektive">
+        <img
+            src="/third-1280.webp"
+            srcset="/third-640.webp 640w, /third-1280.webp 1280w, /third-1920.webp 1920w"
+            sizes="(min-width: 1024px) calc(100vw - 16rem), calc(100vw - 4rem)"
+            width="1280"
+            height="720"
+            loading="lazy"
+            decoding="async"
+            class="regulations-image mt-8 mb-4"
+            alt="Luftaufnahme von Därligen"
+        />
     </div>
 </Layout>

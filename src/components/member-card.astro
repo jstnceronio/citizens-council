@@ -26,6 +26,10 @@ const hasImage = member.img && member.img.length > 0;
         <img 
           src={member.img} 
           alt={`${member.name} coat of arms`}
+          width="64"
+          height="64"
+          loading="lazy"
+          decoding="async"
           class="w-full h-full object-contain"
         />
       </div>

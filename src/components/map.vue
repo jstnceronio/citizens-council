@@ -1,13 +1,11 @@
 <template>
-  <div ref="mapContainer" class="map-container"></div>
-  <pre id="info"></pre>
+  <div ref="mapContainer" class="map-container" aria-label="Interaktive Karte von Därligen">
+    <p v-if="loading" class="map-status">Karte wird geladen …</p>
+    <p v-else-if="error" class="map-status map-error">{{ error }}</p>
+  </div>
 </template>
 
 <script>
-import mapboxgl from "mapbox-gl";
-import MapboxDraw from "@mapbox/mapbox-gl-draw";
-import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
-
 export default {
   name: "MapboxMap",
   props: {
@@ -20,7 +18,32 @@ export default {
       default: 14,
     },
   },
-  mounted() {
+  data() {
+    return {
+      map: null,
+      loading: true,
+      error: "",
+    };
+  },
+  async mounted() {
+    let mapboxgl;
+    let MapboxDraw;
+
+    try {
+      const [mapboxModule, drawModule] = await Promise.all([
+        import("mapbox-gl"),
+        import("@mapbox/mapbox-gl-draw"),
+        import("@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css"),
+      ]);
+      mapboxgl = mapboxModule.default;
+      MapboxDraw = drawModule.default;
+    } catch (error) {
+      this.loading = false;
+      this.error = "Die Karte konnte nicht geladen werden.";
+      console.error(error);
+      return;
+    }
+
     mapboxgl.accessToken = "";
 
     this.map = new mapboxgl.Map({
@@ -31,6 +54,15 @@ export default {
     });
 
     this.map.addControl(new mapboxgl.NavigationControl());
+
+    this.map.on("load", () => {
+      this.loading = false;
+    });
+
+    this.map.on("error", () => {
+      this.loading = false;
+      this.error = "Die Karte konnte nicht geladen werden.";
+    });
 
     // Add a polygon (replace with the coordinates of your area)
     this.map.on("load", () => {
@@ -55,16 +87,6 @@ export default {
           },
         },
       });
-    });
-
-    this.map.on("mousemove", (e) => {
-      document.getElementById("info").innerHTML =
-        // `e.point` is the x, y coordinates of the `mousemove` event
-        // relative to the top-left corner of the map.
-        JSON.stringify(e.point) +
-        "<br />" +
-        // `e.lngLat` is the longitude, latitude geographical position of the event.
-        JSON.stringify(e.lngLat.wrap());
     });
 
     const draw = new MapboxDraw({
@@ -97,7 +119,7 @@ export default {
       });
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (this.map) {
       this.map.remove();
     }
@@ -107,22 +129,22 @@ export default {
 
 <style>
 .map-container {
+  position: relative;
   width: 100%;
   height: 500px;
+  margin-top: 1rem;
+  background: #f3f4f6;
 }
 
-#info {
-  display: table;
-  position: relative;
-  margin: 0px auto;
-  word-wrap: anywhere;
-  white-space: pre-wrap;
-  padding: 10px;
-  border: none;
-  border-radius: 3px;
-  font-size: 12px;
-  text-align: center;
-  color: #222;
-  background: #fff;
+.map-status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #374151;
+}
+
+.map-error {
+  color: #991b1b;
 }
 </style>

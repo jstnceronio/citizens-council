@@ -8,7 +8,12 @@ let posts: any[] = [];
 
 try {
   posts = await useSanityClient().fetch(
-    `*[_type == "post"] | order(publishedAt desc)`
+    `*[_type == "post"] | order(publishedAt desc) {
+      _id,
+      title,
+      slug,
+      "preview": pt::text(body)[0...200]
+    }`
   );
 } catch (err) {
   console.error('Failed to load posts from Sanity', err);
@@ -18,7 +23,7 @@ try {
 function truncateText(text: string) {
   if (!text) return '';
 
-  if (text.length <= 50) {
+  if (text.length <= maxTextPreviewLength) {
     return text;
   } else {
     return text.substring(0, maxTextPreviewLength) + '[...]';
@@ -27,26 +32,11 @@ function truncateText(text: string) {
 
 // Safely extract preview text from a Sanity portable-text-like body
 function getPreviewText(post: any) {
-  if (!post?.body || !Array.isArray(post.body)) {
+  if (!post?.preview) {
     return 'Keine Vorschau verfügbar.';
   }
 
-  // Find the first block with children
-  const firstBlock = post.body.find(
-    (block: any) =>
-      block?._type === 'block' && Array.isArray(block.children)
-  );
-
-  if (!firstBlock) return 'Keine Vorschau verfügbar.';
-
-  const text = firstBlock.children
-    .map((child: any) => child?.text ?? '')
-    .join(' ')
-    .trim();
-
-  if (!text) return 'Keine Vorschau verfügbar.';
-
-  return truncateText(text);
+  return truncateText(post.preview.trim());
 }
 ---
 
@@ -72,21 +62,3 @@ function getPreviewText(post: any) {
     </p>
   )}
 </div>
-
-<script>
-  let screenSize;
-
-  function updateScreenSize() {
-    if (window.innerWidth < 768) {
-      screenSize = 'small';
-    } else if (window.innerWidth < 1024) {
-      screenSize = 'medium';
-    } else {
-      screenSize = 'large';
-    }
-    console.log(screenSize);
-  }
-
-  window.addEventListener('resize', updateScreenSize);
-  updateScreenSize();
-</script>

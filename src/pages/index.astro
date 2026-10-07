@@ -17,7 +17,17 @@ import Layout from "../layouts/layout.astro";
 		<div class="news-container flex flex-col lg:flex-row mt-4">		
 			<div class="left-container">
 				<div class="home-header text-2xl text-gray-900 font-medium">Aktuelles</div>
-				<img src="first.png" class="home-image sm:w-[40rem] bg-gray-200 mt-8 mb-4" alt="Daerligen">
+				<img
+					src="/first-1280.webp"
+					srcset="/first-640.webp 640w, /first-1280.webp 1280w, /first-1920.webp 1920w"
+					sizes="(min-width: 1024px) 640px, calc(100vw - 4rem)"
+					width="1280"
+					height="720"
+					fetchpriority="high"
+					decoding="async"
+					class="home-image sm:w-[40rem] bg-gray-200 mt-8 mb-4"
+					alt="Luftaufnahme von Därligen am Thunersee"
+				/>
 			</div>
 
 			<div

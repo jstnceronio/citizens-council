@@ -6,10 +6,10 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
-			fontFamily: {
-				sans: ["Montserrat", "Lora", ...defaultTheme.fontFamily.sans],
-				serif: ['Caudex', 'Georgia', ...defaultTheme.fontFamily.serif],
-			},
+				fontFamily: {
+					sans: [...defaultTheme.fontFamily.sans],
+					serif: ['Georgia', ...defaultTheme.fontFamily.serif],
+				},
 		},
 	},
 	plugins: [],

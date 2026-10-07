@@ -19,6 +19,16 @@ import Layout from '../layouts/layout.astro'
             Burgernutzen:
             Die Burgergemeinde Därligen richtet keinen Burgernutzen aus.
         </p>
-        <img src="second.png" class="task-image mt-8 mb-4" alt="Vogelperspektive">
+        <img
+            src="/second-1280.webp"
+            srcset="/second-640.webp 640w, /second-1280.webp 1280w, /second-1920.webp 1920w"
+            sizes="(min-width: 1024px) calc(100vw - 16rem), calc(100vw - 4rem)"
+            width="1280"
+            height="720"
+            loading="lazy"
+            decoding="async"
+            class="task-image mt-8 mb-4"
+            alt="Luftaufnahme von Därligen"
+        />
     </div>
 </Layout>

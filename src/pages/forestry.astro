@@ -14,7 +14,16 @@ import Layout from '../layouts/layout.astro'
             <br><br>
         </p>
         <a href="https://forst-tss.ch/" class="hover:text-blue-800 cursor-pointer hover:font-bold">Mehr über den Forstbetrieb Thunersee-Süd</a>
-        <img src="fourth.png" class="forestry-image mt-8 mb-4" alt="Vogelperspektive">
+        <img
+            src="/fourth-1280.webp"
+            srcset="/fourth-640.webp 640w, /fourth-1280.webp 1280w, /fourth-1920.webp 1920w"
+            sizes="(min-width: 1024px) calc(100vw - 16rem), calc(100vw - 4rem)"
+            width="1280"
+            height="720"
+            loading="lazy"
+            decoding="async"
+            class="forestry-image mt-8 mb-4"
+            alt="Luftaufnahme von Därligen"
+        />
     </div>
 </Layout>
-

@@ -14,7 +14,13 @@ import Layout from "../layouts/layout.astro";
     <!-- Historical Image Section -->
     <div class="my-16 flex flex-col items-start">
       <img
-        src="ZiegeleiCropped.jpg"
+        src="/ziegelei-1600.webp"
+        srcset="/ziegelei-800.webp 800w, /ziegelei-1600.webp 1600w, /ziegelei-2400.webp 2400w"
+        sizes="(min-width: 1024px) calc(100vw - 16rem), calc(100vw - 4rem)"
+        width="1600"
+        height="686"
+        loading="lazy"
+        decoding="async"
         alt="Historische Ansicht von Därligen am Thunersee mit der Ziegelei"
         class="w-full rounded-lg shadow-md"
       />
