@@ -1,20 +1,24 @@
 ---
 const navigation = [
   { href: "/", label: "Startseite" },
-  { href: "/task", label: "Aufgaben" },
-  { href: "/members", label: "Verwaltung" },
-  { href: "/history", label: "Geschichte" },
-  { href: "/regulations", label: "Dokumente" },
-  { href: "/property", label: "Liegenschaften" },
-  { href: "/forestry", label: "Forstbetrieb" },
+  { href: "/task/", label: "Aufgaben" },
+  { href: "/members/", label: "Verwaltung" },
+  { href: "/history/", label: "Geschichte" },
+  { href: "/regulations/", label: "Dokumente" },
+  { href: "/property/", label: "Liegenschaften" },
+  { href: "/forestry/", label: "Forstbetrieb" },
 ];
 
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
-const isActive = (href: string) =>
-  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+const isActive = (href: string) => {
+  const normalizedHref = href.replace(/\/$/, "") || "/";
+  return normalizedHref === "/"
+    ? pathname === "/"
+    : pathname === normalizedHref || pathname.startsWith(`${normalizedHref}/`);
+};
 ---
 
-<header data-site-header transition:name="site-header">
+<header data-site-header>
   <div class="upper-header">
     <div class="header-text">
       <img
@@ -84,18 +88,6 @@ const isActive = (href: string) =>
 
   if (!siteWindow.__siteHeaderInitialized) {
     siteWindow.__siteHeaderInitialized = true;
-    const scrollPositions = new Map<string, number>();
-    let currentLocation = window.location.href;
-    let pendingScrollPosition: number | null = null;
-
-    const documentObserver = new MutationObserver(() => {
-      if (pendingScrollPosition === null) return;
-
-      const scrollPosition = pendingScrollPosition;
-      pendingScrollPosition = null;
-      requestAnimationFrame(() => window.scrollTo({ top: scrollPosition, left: 0, behavior: "auto" }));
-    });
-    documentObserver.observe(document, { childList: true });
 
     document.addEventListener("click", (event) => {
       const target = event.target;
@@ -108,33 +100,12 @@ const isActive = (href: string) =>
       }
 
       if (target.closest("[data-mobile-menu] a")) setMenuOpen(false);
-
-      const anchor = target.closest("a");
-      if (
-        anchor instanceof HTMLAnchorElement &&
-        anchor.origin === window.location.origin &&
-        (!anchor.target || anchor.target === "_self") &&
-        !event.metaKey &&
-        !event.ctrlKey &&
-        !event.altKey &&
-        !event.shiftKey &&
-        anchor.href !== currentLocation
-      ) {
-        scrollPositions.set(currentLocation, window.scrollY);
-        pendingScrollPosition = 0;
-        currentLocation = anchor.href;
-      }
     });
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") setMenuOpen(false);
     });
 
-    window.addEventListener("popstate", () => {
-      scrollPositions.set(currentLocation, window.scrollY);
-      pendingScrollPosition = scrollPositions.get(window.location.href) ?? 0;
-      currentLocation = window.location.href;
-    });
   }
 </script>
 
